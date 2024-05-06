@@ -27,8 +27,6 @@ public class Strings_ValidWordAbbreviation {
     
     public boolean validWordAbbreviation(String word, String abbr) {
         int wp = 0, i = 0;
-        
-        System.err.println("word length=" + word.length() + " / " + abbr.length());
 
         while(i < abbr.length() && wp < word.length()) {            
             char abbrChar = abbr.charAt(i);
