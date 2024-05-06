@@ -1,7 +1,6 @@
 package leetcode;
 
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Map;
 
 import lombok.ToString;
@@ -16,8 +15,14 @@ import lombok.ToString;
  * ANSWER:
  * A LRU cache consists of 2 data structures:
  * A simple Hashmap to store key/values
- * A Doubly Linked Node list - while Java LinkedList is doubly linked, insertion and access
+ * Values in the hashmap are doubly linked list nodes where the tail is the most recent accessed
+ * and the head is the least recently accessed.
+ * 
+ * 
+ * We could use a Java LinkedList type, however, insertion and access
  * runs in O(n) time.  getLast and getFirst run in O(1) time but removal runs in O(n) time.
+ * 
+ * Runtime: O(1) since we're using a map to lookup nodes and values.
  */
 public class LinkedList_LRUCache { 
     
@@ -41,7 +46,6 @@ public class LinkedList_LRUCache {
         Node next;
         Node previous;
     }
-    
 
     Map<Integer, Node> cache = new HashMap<>();
     Node head;
@@ -53,7 +57,6 @@ public class LinkedList_LRUCache {
     }
     
     public int get(int key) {
-      //System.err.println("getting=" + key);
       if(cache.containsKey(key)) {
           Node n = cache.get(key);
           removeNode(n);
@@ -76,7 +79,6 @@ public class LinkedList_LRUCache {
           node.key = key;
         }
         node.val = value;
-        //System.err.println("putting value=" + key);
         
         addNode(node);
         cache.put(key, node);
@@ -114,7 +116,6 @@ public class LinkedList_LRUCache {
      if(cache.size() > capacity) {
        //get the head of our node
        int valToRemove = head.key;
-       //System.err.println("removing value=" + valToRemove);
        Node toRemove = cache.get(valToRemove);
        removeNode(toRemove);
        cache.remove(valToRemove);

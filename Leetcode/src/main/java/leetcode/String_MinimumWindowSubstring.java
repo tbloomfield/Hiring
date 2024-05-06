@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 76. Minimum Window Substring
+ * 76. Minimum Window Substring containing duplicate letters
  * https://leetcode.com/problems/minimum-window-substring/description/
  * 
  * Given two strings s and t of lengths m and n respectively, return the minimum window substring

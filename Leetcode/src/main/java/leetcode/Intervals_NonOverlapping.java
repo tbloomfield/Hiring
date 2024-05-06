@@ -58,7 +58,7 @@ public class Intervals_NonOverlapping {
     }
     
     /**
-     * Leetcode problem format - array of high/low values
+     * Return in leetcode expected output format - array of high/low values
      * @param intervals
      * @return
      */
