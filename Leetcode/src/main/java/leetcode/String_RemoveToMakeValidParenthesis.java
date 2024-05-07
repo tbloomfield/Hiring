@@ -28,7 +28,8 @@ import java.util.Deque;
  * Runtime: O(n) where n is the number of characters in String s.
  * Storage: O(n) where the stack can have up to the number of characters enqueued in the worst case scenario.
  */
-public class String_MakeValidParenthesis {
+public class String_RemoveToMakeValidParenthesis {
+    
     public String minRemoveToMakeValid(String s) {
         Deque<Integer> validParentStack = new ArrayDeque<>();
         StringBuilder sb = new StringBuilder(s);

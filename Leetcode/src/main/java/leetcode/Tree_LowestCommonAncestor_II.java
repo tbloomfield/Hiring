@@ -12,7 +12,7 @@ import leetcode.dto.Node;
  * Given two nodes of a binary tree p and q, return their lowest common ancestor
  * (LCA).
  * 
- * Each node will have a reference to its parent node.
+ * --> Each node will have a reference to its parent node.  This is different than the similar problem 236. <--
  * 
  * Definition of lowest common ancestor:
  * 
@@ -23,7 +23,9 @@ import leetcode.dto.Node;
  * Put another way, what is the closest parent node which has both nodes "p" and
  * "q" in it?
  * 
- * Solution 1: Traverse through all the parents of node "p", starting with p
+ * Answer 1: 
+ * 
+ * Traverse through all the parents of node "p", starting with p
  * itself storing the parents into a set Traverse through all the parents of
  * node "q", starting with q itself - if the parent of "q" is found in the set
  * of parents for "p", it's the lowest ancestor.
@@ -31,17 +33,19 @@ import leetcode.dto.Node;
  * Complexity: O(depth) where depth is the number of parent nodes. 
  * Space: O(p) where p  is the number of parent nodes
  * 
- * Solution 2: Given the heads of two singly linked-lists headA and headB,
+ * Answer 2: 
+ * 
+ * Given the heads of two singly linked-lists headA and headB,
  * return the node at which the two lists intersect. If the two linked lists
  * have no intersection at all, return null.
  * 
  * Complexity: O(depth) where d is the number of parent nodes.
  * Space: O(1) requires no additional data structures.
  */
-public class Tree_LowestCommonAncestor {
+public class Tree_LowestCommonAncestor_II {
     
     public static void main(String[] args) { 
-        Tree_LowestCommonAncestor test = new Tree_LowestCommonAncestor();
+        Tree_LowestCommonAncestor_II test = new Tree_LowestCommonAncestor_II();
         
         //creating a new node structure will set the parent references:
         Node node4 = new Node(4);

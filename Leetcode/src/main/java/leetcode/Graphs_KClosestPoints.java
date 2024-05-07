@@ -12,10 +12,13 @@ import java.util.PriorityQueue;
  * The distance between two points on the X-Y plane is the Euclidean distance (i.e., √(x1 - x2)2 + (y1 - y2)2).
  * You may return the answer in any order. The answer is guaranteed to be unique (except for the order that it is in).
  * 
- * Since this is a (K) closest/smallest/biggest problems, we use a Priority Queue which has an insertion  
+ * Answer:
+ *  * Since this is a (K) closest/smallest/biggest problems, we use a Priority Queue; since we want 
+ *  points closest based on eucludian distance, we will use a max heap where distances furthest
+ *  away can easily be popped and removed.
  * 
- * Priority Queue: O(n logk) - PQ is O(log n) insertion, and we loop through all (n) points, so this is O(n log n)
- * Storage: O(k+1) since we only store up to the kth elements.
+ * Priority Queue: O(n log k) - PQ is O(log n) insertion, and we loop through all (n) points, so this is O(n log k)
+ * Storage: O(k+1) since we only store up to (k) elements.
  * 
  */
 public class Graphs_KClosestPoints {
