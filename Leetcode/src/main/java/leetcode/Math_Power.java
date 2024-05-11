@@ -24,22 +24,11 @@ package leetcode;
  */
 public class Math_Power {
     
-    /**
-     * In order to improve efficiency of looping:
-     *    x *=x (n) times, which results in (n) loops, 
-     * use the binary representation of the exponent (n):
-     *     only multiply the power by x if the bit is odd,
-     *     and multiplying x by itself if the bit is even (or 0).
-     *     
-     *     THe binary representation of every even number ends with zero and for 
-     *     odd numbers it ends with 1.
-     * 
-     * O log2(N)
-     * @param x
-     * @param n
-     * @return
-     */
-    public double myPow(double num, int power) {
+    public double myPow(double x, int n) {
+        return myPow(x, (long) n);
+    }
+    
+    public double myPow(double num, long power) {
         
       //any num^0 is always 1, short circuit  
       if(power == 0) { 
@@ -49,7 +38,7 @@ public class Math_Power {
       //handle negative powers
       if(power < 0){
           power = -power; //make power positive
-          num = 1 / num;
+          num = 1.0 / num;
       }
       
       double result = 1;

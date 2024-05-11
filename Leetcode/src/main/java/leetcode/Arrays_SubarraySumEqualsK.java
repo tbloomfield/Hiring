@@ -9,14 +9,14 @@ import java.util.Map;
  * 
  * Given an array of integers and an integer k, return the total number of subarrays whose sum equals k
  * 
- * Answer:
+ * Solution:
  * Somewhat to TwoSum we can keep a map of cumulutive sums and the number that
  * sum occurs.  Then for each index value we can look to see if the value - k = an entry
  * in the map.  If so, we can add the count to our total found. 
  * 
  * Complexity: O(n) we have to traverse through each numbers element
  * Storage: O(n) we store the cumulative sum up to nums.length
- */
+ */ 
 public class Arrays_SubarraySumEqualsK {
     
     Map<Integer/*sum*/, Integer/*countOfTimesSeen*/> sumCounts =  new HashMap<>();

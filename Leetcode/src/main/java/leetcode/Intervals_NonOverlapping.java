@@ -6,14 +6,27 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * 435. Non-overlapping Intervals - return minimum number of intervals to remove 
+ * 435. Non-overlapping Intervals - return minimum number of intervals to remove
  * to make the rest non-overlapping.
  * 
  * https://leetcode.com/problems/non-overlapping-intervals/description/
  * 
- * Given an array of intervals intervals where intervals[i] = [starti, endi], 
- * return the minimum number of intervals you need to remove to make the rest of the 
- * intervals non-overlapping.
+ * Given an array of intervals intervals where intervals[i] = [starti, endi],
+ * return the minimum number of intervals you need to remove to make the rest of
+ * the intervals non-overlapping.
+ * 
+ * Answer:
+ * 
+ * For easy comparison of intervals, it helps if they're sorted. So first we
+ * will sort by end_interval time (nlogn sort).
+ * 
+ * greedy approach: sort end_interval times to process in-order (nlogn sort)
+ * compare each start time: 
+ * if start of interval > end of previous interval, update the end time of previous interval to be the end 
+ * time of this current interval. otherwise this interval needs to be removed
+ * 
+ * runtime: O(nlogn) storage: O(logn) - Arrays.sort uses Quicksort which has
+ * space complexity of O(logn)
  */
 public class Intervals_NonOverlapping {
     class Pair { 
@@ -26,15 +39,6 @@ public class Intervals_NonOverlapping {
         }
     }
     
-    //greedy approach: sort end_interval times to process in-order (nlogn sort)
-    //compare each start 
-    //if start of interval > end of previous interval, update the 
-    //end time of previous interval to be the end time of this current interval.
-    //otherwise this interval needs to be removed
-    
-    // runtime: O(nlogn)
-    // storage: O(logn) - Arrays.sort uses Quicksort which has space complexity of O(logn)
-    // 
     int identifyOverLappingSpace(Pair[] intervals) {
         Arrays.sort(intervals, new Comparator<Pair>() {
             @Override

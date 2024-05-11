@@ -44,7 +44,7 @@ public int minAddToMakeValid(String s) {
                 if(lParentImbalance > 0){ 
                     lParentImbalance --;
                 } else {
-                    //no ( preceeds this, we would need to add
+                    //no '(' preceeds this, we would need to add one for this to be balanced
                     rParentImbalance ++;
                 }                
             }
