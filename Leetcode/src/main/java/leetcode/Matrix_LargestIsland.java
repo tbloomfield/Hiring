@@ -21,23 +21,29 @@ import leetcode.dto.Coordinate;
  * calculate areas of all connected rectangles.
  * 
  * 
- * Answer:
- * This is similar to 200. "Number of Islands", which counts all islands.
+ * Answer: This is similar to 200. "Number of Islands", which counts all
+ * islands.
  * 
- * Loop through each row and column of the grid.  When we find a '1', we create a new "group number"
- * to represent this and any adjacent land.   We then loop through all adjacent land, setting that
- * land to the same group number.  The looping function returns a count of the  number of adjacent
- * land that was put into this group.
+ * Loop through each row and column of the grid. When we find a '1', we create a
+ * new "group number" to represent this and any adjacent land. We then loop
+ * through all adjacent land, setting that land to the same group number. The
+ * looping function returns a count of the number of adjacent land that was put
+ * into this group.
  * 
- * While looping, we may encounter a '0' (or empty space).  This value abuts the land, so upon
- * encountering we add the empty space coordinates to a map of possible candidate nodes to switch.  
- * The value of this coordinate is a set of groups that the the empty space abuts.
+ * While looping, we may encounter a '0' (or empty space). This value abuts the
+ * land, so upon encountering we add the empty space coordinates to a map of
+ * possible candidate nodes to switch. The value of this coordinate is a set of
+ * groups that the the empty space abuts.
  * 
- * After looping completes, we'll loop through all candidate nodes that were found.  If there 
- * were any, we evaluate the max area if all groups this node abuts.
+ * After looping completes, we'll loop through all candidate nodes that were
+ * found. If there were any, we evaluate the max area if all groups this node
+ * abuts.
  * 
- * Complexity: O(MxN) where M and N are the number of rows and columns.
- *             For each cell which is a '1' we evaluate adjoining cells
+ * Complexity: O((MxN)) where M and N are the number of rows and columns. 
+ *             The worst case would be area=1 sized islands, which would result in O(MxN / 2)
+ * 
+ * Storage: O(MxN) the worst case would be area=1 sized islands, which would result in
+ *            O(MxN / 2) storage (half of the input would have entries in the group size mapl
  */
 public class Matrix_LargestIsland {
     
@@ -58,14 +64,10 @@ public class Matrix_LargestIsland {
         
         for(int row = 0; row < grid.length; row ++) { 
             for(int col = 0; col < grid[row].length; col++) { 
-                //part of an island
+                //mark all adjacent cells in an island with the same group identifier
                 if(grid[row][col] == 1) {
-                    //found a new group.
-                    groupNumber ++;
-                    
                     //loop through adjoining land, adding it to this group.
-                    int groupArea = calculateAreaAndUpdateAdjacent(grid, row, col, groupNumber);
-                   // System.err.println("individual area=" + groupArea);
+                    int groupArea = calculateAreaAndUpdateAdjacent(grid, row, col, ++groupNumber);
                     highestIndividualGroupArea = Math.max(highestIndividualGroupArea, groupArea);
                     groupSizes.put(groupNumber, groupArea);
                 }
@@ -89,7 +91,7 @@ public class Matrix_LargestIsland {
               //1 1 1
               //when evaluating zero, the same group will be returned when looking left, down,
               //and right.             
-              Set<Integer/*<gridId*/> visited = new HashSet<>();              
+              Set<Integer/*<gridId*/> visitedIslands = new HashSet<>();              
                 
               //evaluate empty space to see if it adjoins a group
               int joinedGroupArea = 1;  //1 for the cell we might flip
@@ -99,7 +101,7 @@ public class Matrix_LargestIsland {
                   
                   //note that if already visited, the call to set() will fail:
                   //check whether the adjacent node is a group; if so add its area
-                  if(validCoordinate(grid, newRow, newCol) && visited.add(grid[newRow][newCol]) && grid[newRow][newCol] > 1) {
+                  if(validCoordinate(grid, newRow, newCol) && grid[newRow][newCol] > 1 && visitedIslands.add(grid[newRow][newCol]) ) {
                       joinedGroupArea += groupSizes.get(grid[newRow][newCol]);
                   }                  
               } 
@@ -115,8 +117,7 @@ public class Matrix_LargestIsland {
     //checks boundaries of the input row/col within the array
     private boolean validCoordinate(int[][]grid, int row, int col) {
         return row < grid.length && col < grid[0].length  && row >= 0 && col >= 0;
-    }
-    
+    }    
     
     //iterate to surrounding nodes, updating in-place any nodes which are marked as '1' with the group
     //number (ie it's parent grouping).
