@@ -2,8 +2,9 @@ package leetcode;
 
 /**
  * 680. Valid Palindrome
- * https://leetcode.com/problems/valid-palindrome-ii/description/ Given a string
- * s, return true if the s can be palindrome after deleting at most one
+ * https://leetcode.com/problems/valid-palindrome-ii/description/ 
+ * 
+ * Given a string s, return true if the s can be palindrome after deleting at most one
  * character from it.
  * 
  * Solution: 

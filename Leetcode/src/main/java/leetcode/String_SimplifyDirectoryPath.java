@@ -14,10 +14,10 @@ import java.util.Deque;
  * removing trailing slashes 
 
  */
-public class Strings_SimplifyDirectoryPath {
+public class String_SimplifyDirectoryPath {
     
     public static void main(String [] args) {
-        Strings_SimplifyDirectoryPath test = new Strings_SimplifyDirectoryPath();
+        String_SimplifyDirectoryPath test = new String_SimplifyDirectoryPath();
         System.err.println("result = " + test.simplifyPath("/home/user/Documents/../Pictures/"));
     }
     

@@ -19,9 +19,9 @@ package leetcode;
  * scenario they're both the same
  * Storage: O(1) no new storage is created.
  */
-public class Strings_ValidWordAbbreviation {
+public class String_ValidWordAbbreviation {
     public static void main(String[] args) { 
-        Strings_ValidWordAbbreviation test = new Strings_ValidWordAbbreviation();
+        String_ValidWordAbbreviation test = new String_ValidWordAbbreviation();
         System.err.println(test.validWordAbbreviation("internationalization", "i5a11o1"));
     }
     

@@ -14,7 +14,7 @@ import java.util.Map;
  * Runtime: O(n) where n = number of elements in the array
  * Storage: O(n) where n = number of elements in the array.
  */
-public class Arrays_TwoSum {
+public class Arrays_2Sum {
     
     public int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> mapIndexes =  new HashMap<>();

@@ -1,6 +1,6 @@
 package leetcode;
 
-public class Strings_IsNumber {
+public class String_IsNumber {
     
     /**
      * runtime is O(n)

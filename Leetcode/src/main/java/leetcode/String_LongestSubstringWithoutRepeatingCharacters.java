@@ -16,10 +16,10 @@ import java.util.Set;
  * Runtime: O(2n) = O(n), in the worst case we'll visit each character by both the right and left pointer
  * Storage: O(k) where k is the number of unique characters we encounter.
  */
-public class Strings_LongestSubstringWithoutRepeatingCharacters {
+public class String_LongestSubstringWithoutRepeatingCharacters {
     
     public static void main(String[] args) { 
-        Strings_LongestSubstringWithoutRepeatingCharacters test = new Strings_LongestSubstringWithoutRepeatingCharacters();
+        String_LongestSubstringWithoutRepeatingCharacters test = new String_LongestSubstringWithoutRepeatingCharacters();
         System.err.println(test.lengthOfLongestSubstring("aabaab!bb"));
     }
     

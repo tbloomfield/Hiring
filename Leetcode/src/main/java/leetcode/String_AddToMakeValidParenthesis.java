@@ -1,7 +1,7 @@
 package leetcode;
 
 /**
- * 921. Minimum Add to Make Valid Parentheses
+ * 921. Minimum Add to Make Valid Parenthesis
  * https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/description/
  * 
  * A parentheses string is valid if and only if:

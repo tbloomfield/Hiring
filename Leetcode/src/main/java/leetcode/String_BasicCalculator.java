@@ -19,7 +19,7 @@ package leetcode;
  * Complexity: O(n) looping through each digit of "s"
  * Storage: O(1) as there is no real storage other than updating simple primitives.
  */
-public class Strings_BasicCalculator {
+public class String_BasicCalculator {
 
     //O(n) storage = O(1)
     public int calculate(String s) {

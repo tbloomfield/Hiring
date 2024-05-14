@@ -7,14 +7,16 @@ import java.util.Map;
  * 76. Minimum Window Substring containing duplicate letters
  * https://leetcode.com/problems/minimum-window-substring/description/
  * 
- * Given two strings s and t of lengths m and n respectively, return the minimum window substring
-  of s such that every character in t (including duplicates) is included in the window. 
-  If there is no such substring, return the empty string "".
- *
- * Runtime: O(t) where t is # of characters in T + O(s) where s is the length of the string to search
- *        = O(t+s)
- * Space: O(t) - keep a map of characters in (t).
- *   
+ * Given two strings s and t of lengths m and n respectively, return the minimum
+ * window substring of s such that every character in t (including duplicates)
+ * is included in the window. If there is no such substring, return the empty
+ * string "".
+ * 
+ * Answer: use a sliding window which can grow and contract to find the minimum.
+ * 
+ * Complexity: O(t) where t is # of characters in T + O(s) where s is the length of
+ *      the string to search = O(t+s) 
+ * Storage: O(t) - keep a map of characters in (t). 
  */
 public class String_MinimumWindowSubstring {
     
