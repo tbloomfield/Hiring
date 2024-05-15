@@ -18,6 +18,13 @@ import java.util.Arrays;
  * 4 | -1
  * 
  * would yield 1,2,4,7,5,3,8,6,9
+ * 
+ * Answer: 
+ * Use Pong collision detection while moving either up/right or down/left to traverse
+ * the matrix.
+ * 
+ * Complexity: O(n x m) we loop through all rows and columns
+ * Storage: O(n) where n is the number of unique elements found in (n x m) 
  */
 public class Matrix_DiagonalTraverse {
     
@@ -38,13 +45,14 @@ public class Matrix_DiagonalTraverse {
         int[] traverseResults = new int[mat.length * mat[0].length];
         
         while(cellsEvaluated < mat.length * mat[0].length) {
+            
             //get the current value
             traverseResults[cellsEvaluated] = mat[row][col];
             
             //check direction we're going (up & right) or (down & left)
-            //by comparing cell index sums.  
-            // Up/Right = 0,0(even).  
-            // Down/left = {0,1} and {1,0} (odd
+            //by comparing cell index sums.  For example:
+            // Up/Right = 0,0(even sums).  
+            // Down/left = {0,1} and {1,0} (odd sums)
                                     
             //set the direction of traversal: up and right:           
             if((row+col) % 2 == 0) {
@@ -62,9 +70,9 @@ public class Matrix_DiagonalTraverse {
             } 
             //odd moves down and left
             else {
-                if(row == mat.length-1) { //bottom border bounce
+                if(row == mat.length-1) { //bottom border bounce.
                     col++;                    
-                } else if(col == 0) {           //left border bounce
+                } else if(col == 0) {     //left border bounce
                     row ++;                    
                 } else {
                   //down and left
