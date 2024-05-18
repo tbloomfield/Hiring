@@ -26,7 +26,6 @@ public class Tree_VerticalOrderTraversal {
     
     //keep start / end indexes
     int minColumn, maxColumn = 0;
-    //Map<Integer/*column*/, List<Pair<Integer/*row->nodevalue*/>>> columnValues = new HashMap<>();
     
     public List<List<Integer>> verticalTraversal(TreeNode root) {
         //sort elements within a column by their rows (lower = first)
@@ -45,11 +44,12 @@ public class Tree_VerticalOrderTraversal {
             //sort results from row.min to row.max(the left value in the pair)
             //O(p log p)
             Collections.sort(pairs, (p1, p2) -> {
-                //sort ascending by row
+                //sort ascending by row, high (zero) to low (deeper rows)
                 int calc = p2.leftSide - p1.leftSide;
                 
                 //for ties, use node value ordering
                 if(calc ==0) { 
+                    //low to high
                     return p1.rightSide - p2.rightSide;
                 }
                 

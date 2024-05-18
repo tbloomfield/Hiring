@@ -2,7 +2,9 @@ package leetcode;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 249. Group Shifted Strings
@@ -23,42 +25,65 @@ import java.util.List;
  * 
  * Answer:
  * 
- * abc -> bcd after 1 shift
- * 'a'+'b'+'c'
- *  0 + 1 + 2 = 3
- *  
- * 'b'+'c'+'d'
- *  1 + 2 + 3 = 6  
- *  6%3 == 0 so bcd is a shift from abc.
- *  
- *  'x'+'y'+'z'
- *  23 +24 +25 = 72
- *  72%3 == 0 so xyz is a shift from abc.  72%6==0 so xyz is also a shift from bcd.
- *  
- *  'a' + 'z'
- *  0   + 25 = 25
- *  
- *  'b' + 'a' 
- *   1  + 0 = 1  
+ * Evaluate the relative distance between letters in the alphabet, supporting a cycle.
+ * 
+ * (26+26) % 26
+ * 
+ * ie : "az" = 0 | 4
+ *      "ba" = | 25
  * 
  * calculate the numeric value of the characters in the string
  * Any answers which are within 25 characters of each other 
  * 
+ * Complexity: O(n) n = number or strings * (O(c)) where c is number of characters in each string
+ *             So overall complexity is O(n*c)
+ * Storage: O(n) where n = number of strings + O(c)) where c is the number of character in each string
+ *             So overall storage is O(n*c)
  */
 public class Strings_GroupShiftedString {
     
     public static void main(String[] args) { 
         Strings_GroupShiftedString test = new Strings_GroupShiftedString();
+        var results = test.groupStrings(new String[] { "abc","am" } );
+        System.err.println(results);
+    }
+    
+    /**
+     * a hash function that results in string collisions if the distance
+     * between characters is the same, IE:
+     * a b = c d
+     * @param s
+     * @return
+     */
+    private final String getHash(String s) {
+        char firstChar = s.charAt(0);
+        StringBuilder sb = new StringBuilder(s.length());
+        //append the length to make this unique to the number of character in the string
+        //IE, without this, the following hashes would be the same:
+        //abc = 012 and am=012
+        sb.append(s.length());
+        for(int i = 0; i < s.length(); i++) { 
+            int val = (s.charAt(i) - firstChar + 26) % 26;
+            sb.append(val);
+        }
+        return sb.toString();
     }
     
     public List<List<String>> groupStrings(String[] strings) {
+        if(strings.length == 0) { 
+            return List.of();
+        }
         
-        //step 1: sort strings by length; shifting operations can only be grouped
-        //by length
-        Arrays.sort(strings, (s1, s2) -> s1.length() - s2.length());
+        Map<String/*hashCode*/, List<String>> groupings = new HashMap<>();
+        for(String s: strings) {
+            String hash = getHash(s);
+            List<String> stringsFromHash = groupings.getOrDefault(hash, new ArrayList<>());
+            System.err.println("Hash=" + hash);
+            stringsFromHash.add(s);
+            groupings.put(hash, stringsFromHash);
+        }
         
-        List<List<String>> groupings = new ArrayList<>();
-        
+        //convert to list
+        return new ArrayList<>(groupings.values());
     }
-
 }

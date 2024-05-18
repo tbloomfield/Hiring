@@ -1,6 +1,7 @@
 package leetcode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -29,8 +30,10 @@ import java.util.List;
 public class Intervals_2IntervalIntersection {
     public static void main(String[] args) { 
         Intervals_2IntervalIntersection test = new Intervals_2IntervalIntersection();
-        test.intervalIntersection(new int[][] { {0,2},{5,10},{13,23},{24,25}}, 
+        var results = 
+         test.intervalIntersection(new int[][] { {0,2},{5,10},{13,23},{24,25}}, 
                                   new int[][] { {1,5},{8,12},{15,24},{25,26}});
+        //results = [[1, 2], [5, 5], [8, 10], [15, 23], [24, 24], [25, 25]]
     }    
     
     //for intersections on 2 intervals

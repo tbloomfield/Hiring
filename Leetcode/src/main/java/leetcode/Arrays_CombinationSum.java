@@ -1,7 +1,6 @@
 package leetcode;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -14,7 +13,7 @@ import java.util.List;
  * Answer: This is simple backtracking where we need to look for all
  * combinations.
  * 
- * Complexity: O(n^target) where n is the number of times we recurse and . The
+ * Complexity: O(n^target) where n is the number of times we recurse. The
  * total number of steps during the backtracking would be the number of nodes in
  * the tree. 
  * 

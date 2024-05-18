@@ -33,7 +33,7 @@ public static void main(String[] args) {
     public int[][] merge(int[][] intervals) {
         List<int[]> mergedIntervals = new ArrayList<>();  
         
-        //Step 1: Sort interval input - note that at least 1 interval will be provided
+        //Step 1: Sort interval input on start interval - note that at least 1 interval will be provided
         Arrays.sort(intervals, (a,b) -> Integer.compare(a[0], b[0]));
         
         //Step 2: loop though results, merging overlapping intervals into a "new"

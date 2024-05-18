@@ -1,5 +1,18 @@
 package leetcode;
 
+/**
+ * 65.  Valid Number
+ * https://leetcode.com/problems/valid-number/
+ * 
+ * Given a string s, return whether s is a valid number.
+ * 
+ * Answer:
+ * Loop through each character in the string, tracking various cases to determine
+ * if a number is valid or not.
+ * 
+ * Complexity: O(n)
+ * Storage: O(n) since we're tracking the previous character in the algorithm
+ */
 public class String_IsNumber {
     
     /**
